@@ -42,21 +42,62 @@ function juego() {
 
 //Actividad 2
 
-let frutas = ["manzana", "banano", "uva", "pera", "sandia", "kiwi", "naranja"]
+let frutas = ["manzana", "banano", "uva", "pera", "sandia", "kiwi", "naranja",]
 console.log(frutas);
 
 frutas.sort();
-console.log(frutas);
 
-function SingularAPlural(palabra) {    
-    palabra = palabra + "s"
-    return palabra
+function SingularAPlural(palabra) {
+  if (palabra.endsWith("s") === false) {
+      palabra = palabra + "s";
+  }
+  return palabra;
 }
 
-let frutasMayusculas = []
+
+let frutasPlural = []
 for (const fruta of frutas) {
-    
-    frutasMayusculas.push(SingularAPlural(fruta))
+  frutasPlural.push(SingularAPlural(fruta))
 }
 
-console.log(frutasMayusculas);
+console.log(frutasPlural);
+
+function existeFruta(buscarfruta){
+  if (frutas.includes(buscarfruta)) {
+    return "true";
+  } else {
+    return "false";
+  }
+}
+
+console.log(existeFruta("mango"))
+console.log(existeFruta("uva"))
+//Pruebas console.log(existeFruta("manzana"))
+//Pruebas console.log(existeFruta("arandano"))
+
+let frutasCortas = []
+for (const fruta of frutas) {
+  if (fruta.length <= 4) {
+    frutasCortas.push(fruta);
+  }
+}
+
+console.log(frutasCortas);
+
+function eliminarFruta(buscarfruta) {
+  if (frutas.includes(buscarfruta)){
+    let borrar = frutas.indexOf(buscarfruta);
+    frutas.splice(borrar,1);
+    return "Eliminado";
+  } else {
+    return "false";
+  }
+}
+
+console.log(eliminarFruta("mango"));
+console.log(eliminarFruta("uva"));
+console.log(eliminarFruta("kiwi"));
+console.log(eliminarFruta("banano"));
+console.log(eliminarFruta("perro caliente"));
+
+console.log(frutas);
